@@ -1,6 +1,6 @@
 {
   "name": "people-search-challenge-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

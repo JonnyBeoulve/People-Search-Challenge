@@ -1,0 +1,45 @@
+.people-search {
+    display: block;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.people-search-form-input {
+    display: block;
+    width: auto;
+    margin: 20px 10px 20px 10px;
+}
+
+.people-search-form-input label {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 0.8em;
+}
+
+.people-search-form-input input {
+    padding: 5px 5px 5px 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(179, 179, 179);
+}
+
+.people-search-form-submit {
+    display: flex;
+    height: 30px;
+    width: 55px;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    background-color: rgb(120, 128, 151);
+    align-self: center;
+    cursor: pointer;
+}
+
+.people-search-form-submit:hover {
+    background-color: rgb(86, 95, 122);
+}
+
+.people-search-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
