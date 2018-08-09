@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Footer from './components/Layout/Footer/Footer';
 import Header from './components/Layout/Header/Header';
 import Layout from './components/Layout/Layout';
 import PeopleSearch from './containers/PeopleSearch/PeopleSearch';
@@ -12,6 +13,7 @@ const App = () => {
         <Layout>
           <Header />
           <PeopleSearch />
+          <Footer />
         </Layout>
     );
 }

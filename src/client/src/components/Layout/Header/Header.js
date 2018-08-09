@@ -7,7 +7,7 @@ import './Header.css';
 const Header = () => {
     return (
         <header className="header">
-            <h2>Welcome to Versium People Search</h2>
+            <h1>Welcome to Versium People Search</h1>
         </header>
     )
 }

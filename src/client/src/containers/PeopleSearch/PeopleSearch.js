@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
+import Loader from '../../components/Loader/Loader';
+import NoResults from '../../components/NoResults/NoResults';
+import PersonSearchResult from '../../components/PersonSearchResult/PersonSearchResult';
 import './PeopleSearch.css';
+
+import { fadeIn } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+
+/*=====================================================================
+// Animated styles using Aphrodite and React Animations.
+=====================================================================*/
+const styles = StyleSheet.create({
+  fadeIn: {
+    animationName: fadeIn,
+    animationDuration: '1.5s'
+  }
+})
 
 /*======================================================================
 // This container manages state and contains the major functions
@@ -16,22 +33,58 @@ class PeopleSearch extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            usState: ''
+            usState: '',
+            loading: false,
+            noResults: false,
+            searchData: []
         };
     }
 
     /*= =====================================================================
-    // Upon a user clicking Submit, handle search.
+    // Upon a user clicking Submit, handle search. First we check to make
+    // sure queries have been entered for all three input elements and
+    // display a loader if so. Then we perform the GET request and handle the 
+    // response.
     ====================================================================== */
     handlePeopleSearchSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.firstName);
+        if ((!this.state.firstName) || (!this.state.lastName) || (!this.state.usState)) return;
+        this.setState({ 
+            loading: true, 
+            noResults: false,
+            searchData: []
+        });
+
+        axios.get('/peoplesearch')
+            .then(res => {
+                this.setState({
+                    loading: false, 
+                    noResults: false,
+                    searchData: res.data.datafinder.results
+                })
+                console.log(res);
+                console.log(res.data.datafinder.results);
+            })
+            .catch(err => {
+                this.setState({
+                    loading: false, 
+                    noResults: true,
+                })
+                console.log('An error occurred during fetch. ' + err);
+            })
     }
 
+    /*= =====================================================================
+    // Here we will always render the search form. Additionally, we will
+    // render a loader when transactions are taking place, a no results
+    // message if no results are received on a search, and map results
+    // using a child stateless functional component with props passed down
+    // when results are received.
+    ====================================================================== */
     render() {
         return (
             <div className="people-search">
-                <form className="people-search-form" onSubmit={this.handlePeopleSearchSubmit}>
+                <form className={["people-search-form", css(styles.fadeIn)].join(' ')} onSubmit={this.handlePeopleSearchSubmit}>
                     <div className="people-search-form-input">
                         <label>FirstName</label>
                         <input className="people-search-fname" type="text" name="email" label="FirstName" placeholder="eg. John" onChange={e => this.setState({ firstName: e.target.value })} />
@@ -46,6 +99,23 @@ class PeopleSearch extends Component {
                     </div>
                     <button className="people-search-form-submit" type="submit" value="Submit">Submit</button>
                 </form>
+                <div className="people-search-body">
+                    {(this.state.loading && <Loader />)}
+                    {(this.state.noResults && <NoResults />)}
+                    {(this.state.searchData && this.state.searchData.map((person, index) => {
+                        return (
+                            <PersonSearchResult 
+                                key={person.phone}
+                                resultNum={index + 1}
+                                personFName={person.FirstName}
+                                personLName={person.LastName}
+                                personAddress={person.Address}
+                                personCity={person.City}
+                                personState={person.State}
+                            />
+                        )})
+                    )}
+                </div>
             </div>
         )
     }

@@ -1,0 +1,7 @@
+.person-search-result {
+    padding: 20px 20px 20px 20px;
+    width: 100%;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 3px;
+    font-size: 0.9em;
+}

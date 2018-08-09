@@ -3,8 +3,14 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const path = require('path');
 
 const apicallRoutes = require('./routes/apicall');
+
+/*============================================================================
+// Set port.
+============================================================================*/
+const port = (process.env.PORT || 5000);
 
 /*============================================================================
 // HTTP methodology to import the Api Call and Contact routes.

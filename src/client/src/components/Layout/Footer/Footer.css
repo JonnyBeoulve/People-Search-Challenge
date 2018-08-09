@@ -1,0 +1,24 @@
+.footer {
+    background-color: #1a1a1a;
+    height: 400px;
+    width: 100%;
+}
+
+.footer p {
+    line-height: 400px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.footer a {
+    color: #bbb;
+}
+
+a:visited {
+    color: #bbb;
+}
+
+.footer a:hover {
+    color: purple;
+}

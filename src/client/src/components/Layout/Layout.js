@@ -6,7 +6,7 @@ import './Layout.css';
 // This will serve as a high level layout wrapper for the UI.
 ======================================================================*/
 const Layout = (props) => (
-    <main>
+    <main className="layout">
         {props.children}
     </main>
 );
