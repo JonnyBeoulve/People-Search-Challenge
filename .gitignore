@@ -1,0 +1,15 @@
+/node_modules
+/coverage
+/build
+/src/client/build/
+/src/client/node_modules
+.firebaserc
+firebase.json
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
