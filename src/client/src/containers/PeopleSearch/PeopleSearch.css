@@ -29,13 +29,20 @@
     font-size: 0.8em;
 }
 
-.people-search-form-input input {
+.people-search-form-input input:not(:disabled) {
     padding: 5px 5px 5px 5px;
     border-radius: 3px;
     border: 1px solid rgb(179, 179, 179);
 }
 
-.people-search-form-submit {
+.people-search-form-input input:disabled {
+    padding: 5px 5px 5px 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(179, 179, 179);
+    cursor: not-allowed;
+}
+
+.people-search-form-submit:not(:disabled) {
     display: flex;
     height: 30px;
     width: 55px;
@@ -47,7 +54,19 @@
     cursor: pointer;
 }
 
-.people-search-form-submit:hover {
+.people-search-form-submit:disabled {
+    display: flex;
+    height: 30px;
+    width: 55px;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    background-color: #1a1a1a;
+    align-self: center;
+    cursor: not-allowed;
+}
+
+.people-search-form-submit:not(:disabled):hover {
     background-color: purple;
 }
 

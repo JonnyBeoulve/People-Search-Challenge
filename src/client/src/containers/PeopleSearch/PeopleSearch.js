@@ -63,11 +63,19 @@ class PeopleSearch extends Component {
             }
         })
             .then(res => {
-                this.setState({
-                    loading: false, 
-                    noResults: false,
-                    searchData: res.data.datafinder.results
-                })
+                if (res.data.datafinder.results) { // If results were received
+                    this.setState({
+                        loading: false, 
+                        noResults: false,
+                        searchData: res.data.datafinder.results
+                    })
+                } else {
+                    this.setState({
+                        loading: false, 
+                        noResults: true,
+                        searchData: []
+                    })
+                }
             })
             .catch(err => {
                 this.setState({
@@ -91,17 +99,17 @@ class PeopleSearch extends Component {
                 <form className={["people-search-form", css(styles.fadeIn)].join(' ')} onSubmit={this.handlePeopleSearchSubmit}>
                     <div className="people-search-form-input">
                         <label>FirstName</label>
-                        <input className="people-search-fname" type="text" name="email" label="FirstName" placeholder="eg. John" onChange={e => this.setState({ firstName: e.target.value })} />
+                        <input className="people-search-fname" type="text" name="email" label="FirstName" placeholder="eg. John" disabled={this.state.loading} onChange={e => this.setState({ firstName: e.target.value })} />
                     </div>
                     <div className="people-search-form-input">
                         <label>LastName</label>
-                        <input className="people-search-lname" type="text" name="password" placeholder="eg. Smith" onChange={e => this.setState({ lastName: e.target.value })} />
+                        <input className="people-search-lname" type="text" name="password" placeholder="eg. Smith" disabled={this.state.loading} onChange={e => this.setState({ lastName: e.target.value })} />
                     </div>
                     <div className="people-search-form-input">
                         <label>State</label>
-                        <input className="people-search-usstate" type="text" name="password" placeholder="eg. LA" onChange={e => this.setState({ usState: e.target.value })} />
+                        <input className="people-search-usstate" type="text" name="password" placeholder="eg. LA" disabled={this.state.loading} onChange={e => this.setState({ usState: e.target.value })} />
                     </div>
-                    <button className="people-search-form-submit" type="submit" value="Submit">Submit</button>
+                    <button className="people-search-form-submit" type="submit" value="Submit" disabled={this.state.loading}>Submit</button>
                 </form>
                 <div className="people-search-body">
                     {(this.state.loading && <Loader />)}

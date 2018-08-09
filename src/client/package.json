@@ -1,6 +1,6 @@
 {
   "name": "people-search-challenge-client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dependencies": {
     "aphrodite": "^2.2.2",
     "axios": "^0.18.0",
