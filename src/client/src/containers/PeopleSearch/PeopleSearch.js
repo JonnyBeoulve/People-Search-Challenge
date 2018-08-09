@@ -34,6 +34,7 @@ class PeopleSearch extends Component {
             firstName: '',
             lastName: '',
             usState: '',
+            inputFailure: false,
             loading: false,
             noResults: false,
             searchData: []
@@ -48,14 +49,16 @@ class PeopleSearch extends Component {
     ====================================================================== */
     handlePeopleSearchSubmit = (e) => {
         e.preventDefault();
+        
         if ((!this.state.firstName) || (!this.state.lastName) || (!this.state.usState)) return;
+
         this.setState({ 
             loading: true, 
             noResults: false,
             searchData: []
         });
 
-        axios.get('/peoplesearch', {
+        axios.get('/peoplesearch', { // Perform GET request to API
             params: {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,

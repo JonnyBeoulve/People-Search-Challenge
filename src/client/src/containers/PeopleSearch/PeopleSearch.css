@@ -71,6 +71,11 @@
 }
 
 @media only screen and (max-width: 900px) {
+
+    .people-search-body {
+        min-height: 200px;
+    }
+
     .people-search-form {
         flex-direction: column;
         align-items: center;
