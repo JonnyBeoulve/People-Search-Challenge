@@ -55,15 +55,19 @@ class PeopleSearch extends Component {
             searchData: []
         });
 
-        axios.get('/peoplesearch')
+        axios.get('/peoplesearch', {
+            params: {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                usState: this.state.usState
+            }
+        })
             .then(res => {
                 this.setState({
                     loading: false, 
                     noResults: false,
                     searchData: res.data.datafinder.results
                 })
-                console.log(res);
-                console.log(res.data.datafinder.results);
             })
             .catch(err => {
                 this.setState({
