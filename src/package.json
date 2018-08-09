@@ -1,0 +1,29 @@
+{
+  "name": "here-comes-the-nerd-react",
+  "version": "1.1.0",
+  "description": "the frontend for the official website for here comes the nerd",
+  "main": "index.js",
+  "author": "Jonathan Leack",
+  "license": "ISC",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonnyBeoulve/Here-Comes-The-Nerd.git"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "fetch-jsonp": "^1.1.3",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.0.17"
+  },
+  "devDependencies": {}
+}

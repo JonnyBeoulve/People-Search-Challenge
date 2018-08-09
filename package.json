@@ -1,0 +1,22 @@
+{
+  "name": "people-search-challenge",
+  "author": "Jonathan Leack",
+  "license": "ISC",
+  "version": "0.1.0",
+  "engines": {
+    "node": "6.11.3",
+    "npm": "3.10.10"
+  },
+  "description": "My React coding challenge mini-project that allows a user to search for people based on three parameters.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {}
+}
