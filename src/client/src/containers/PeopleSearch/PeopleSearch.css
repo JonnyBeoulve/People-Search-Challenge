@@ -26,20 +26,37 @@
 .people-search-form-input label {
     display: inline-block;
     margin: 0 10px 0 0;
+    width: 60px;
     font-size: 0.8em;
 }
 
 .people-search-form-input input:not(:disabled) {
     padding: 5px 5px 5px 5px;
+    width: auto;
     border-radius: 3px;
-    border: 1px solid rgb(179, 179, 179);
+    border: 2px solid rgb(179, 179, 179);
+
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 
 .people-search-form-input input:disabled {
     padding: 5px 5px 5px 5px;
+    width: auto;
     border-radius: 3px;
-    border: 1px solid rgb(179, 179, 179);
+    border: 2px solid rgb(179, 179, 179);
     cursor: not-allowed;
+
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+
+.people-search-form-input input:focus {
+    padding: 5px 5px 5px 5px;
+    border-radius: 3px;
+    border: 2px solid purple;
 }
 
 .people-search-form-submit:not(:disabled) {
@@ -52,6 +69,10 @@
     background-color: #1a1a1a;
     align-self: center;
     cursor: pointer;
+
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 
 .people-search-form-submit:disabled {
@@ -64,6 +85,10 @@
     background-color: #1a1a1a;
     align-self: center;
     cursor: not-allowed;
+
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 
 .people-search-form-submit:not(:disabled):hover {

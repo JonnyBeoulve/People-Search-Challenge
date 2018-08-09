@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import InputError from '../../components/InputError/InputError';
 import Loader from '../../components/Loader/Loader';
 import NoResults from '../../components/NoResults/NoResults';
 import PersonSearchResult from '../../components/PersonSearchResult/PersonSearchResult';
 import './PeopleSearch.css';
-
-import { fadeIn } from 'react-animations';
-import { StyleSheet, css } from 'aphrodite';
-
-/*=====================================================================
-// Animated styles using Aphrodite and React Animations.
-=====================================================================*/
-const styles = StyleSheet.create({
-  fadeIn: {
-    animationName: fadeIn,
-    animationDuration: '1.5s'
-  }
-})
 
 /*======================================================================
 // This container manages state and contains the major functions
@@ -34,7 +22,7 @@ class PeopleSearch extends Component {
             firstName: '',
             lastName: '',
             usState: '',
-            inputFailure: false,
+            inputError: false,
             loading: false,
             noResults: false,
             searchData: []
@@ -50,13 +38,22 @@ class PeopleSearch extends Component {
     handlePeopleSearchSubmit = (e) => {
         e.preventDefault();
         
-        if ((!this.state.firstName) || (!this.state.lastName) || (!this.state.usState)) return;
-
-        this.setState({ 
-            loading: true, 
-            noResults: false,
-            searchData: []
-        });
+        // Simple form validation
+        if ((this.state.firstName.length < 2) || (this.state.lastName.length < 2) || (this.state.usState.length < 2)) {
+            this.setState({ 
+                inputError: true,
+                noResults: false,
+                searchData: []
+            });
+            return;
+        } else {
+            this.setState({ 
+                inputError: false,
+                loading: true, 
+                noResults: false,
+                searchData: []
+            });
+        }
 
         axios.get('/peoplesearch', { // Perform GET request to API
             params: {
@@ -99,7 +96,7 @@ class PeopleSearch extends Component {
     render() {
         return (
             <div className="people-search">
-                <form className={["people-search-form", css(styles.fadeIn)].join(' ')} onSubmit={this.handlePeopleSearchSubmit}>
+                <form className="people-search-form" onSubmit={this.handlePeopleSearchSubmit}>
                     <div className="people-search-form-input">
                         <label>FirstName</label>
                         <input className="people-search-fname" type="text" name="email" label="FirstName" placeholder="eg. John" disabled={this.state.loading} onChange={e => this.setState({ firstName: e.target.value })} />
@@ -115,6 +112,7 @@ class PeopleSearch extends Component {
                     <button className="people-search-form-submit" type="submit" value="Submit" disabled={this.state.loading}>Submit</button>
                 </form>
                 <div className="people-search-body">
+                    {(this.state.inputError && <InputError />)}
                     {(this.state.loading && <Loader />)}
                     {(this.state.noResults && <NoResults />)}
                     {(this.state.searchData && this.state.searchData.map((person, index) => {
